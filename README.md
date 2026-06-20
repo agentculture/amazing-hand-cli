@@ -18,8 +18,8 @@ Agent and CLI for controlling the Amazing Hand robotic hand (Pollen Robotics)
 ```bash
 uv sync
 uv run pytest -n auto                 # run the test suite
-uv run amazing-hand-cli whoami  # identity from culture.yaml
-uv run amazing-hand-cli learn   # self-teaching prompt (add --json)
+uv run amazing-hand whoami      # identity from culture.yaml
+uv run amazing-hand learn       # self-teaching prompt (add --json)
 uv run teken cli doctor . --strict    # the agent-first rubric gate CI runs
 ```
 

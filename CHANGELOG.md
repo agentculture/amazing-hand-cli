@@ -5,6 +5,22 @@ All notable changes to this project will be documented in this file.
 Format follows [Keep a Changelog](https://keepachangelog.com/). This project
 adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.3.3] - 2026-06-20
+
+### Added
+
+- explain catalog primary key for the console command name `amazing-hand` (the `[project.scripts]` entry point); `amazing-hand-cli` kept as a back-compat alias.
+
+### Changed
+
+- /init: replaced the seed CLAUDE.md placeholder with a full Claude Code runtime prompt for this agent (architecture, the three-name split, conventions, extension recipe).
+- Reconciled the command-name split — command-surface strings (argparse prog, learn/explain/overview/cli/doctor output, README examples) now say `amazing-hand` to match the actual console command. The PyPI dist name and mesh nick stay `amazing-hand-cli`.
+
+### Fixed
+
+- Agent-first rubric gate (`teken cli doctor . --strict`) was red: its `explain_self` check runs `explain amazing-hand` but the catalog only had an `amazing-hand-cli` key, failing the CI lint job. Now green (22 tests pass, rubric 26/26).
+- pyproject.toml license set to Apache-2.0 (was MIT) to match the Apache-2.0 LICENSE file and the README License section.
+
 ## [0.3.2] - 2026-06-18
 
 ### Added

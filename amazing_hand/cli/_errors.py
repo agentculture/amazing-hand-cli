@@ -1,6 +1,6 @@
 """CliError and exit-code policy (stable-contract).
 
-Every failure inside amazing-hand-cli raises :class:`CliError`. The
+Every failure inside amazing-hand raises :class:`CliError`. The
 top-level ``main()`` catches it, formats via :mod:`amazing_hand.cli._output`,
 and exits with :attr:`CliError.code`. This guarantees:
 
@@ -13,7 +13,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-# Exit-code policy. Documented in ``amazing-hand-cli learn`` output.
+# Exit-code policy. Documented in ``amazing-hand learn`` output.
 # 0      = success
 # 1      = user-input error (bad flag, missing required arg, unknown path)
 # 2      = environment / setup error (tool not installed, file unreadable)

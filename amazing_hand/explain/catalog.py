@@ -1,7 +1,7 @@
-"""Markdown catalog for ``amazing-hand-cli explain <path>``.
+"""Markdown catalog for ``amazing-hand explain <path>``.
 
 Each entry is verbatim markdown. Keys are command-path tuples. The empty tuple
-and ``("amazing-hand-cli",)`` both resolve to the root entry.
+and ``("amazing-hand",)`` both resolve to the root entry.
 
 Keep bodies self-contained: an agent reading one entry should get enough
 context without chaining reads.
@@ -10,7 +10,7 @@ context without chaining reads.
 from __future__ import annotations
 
 _ROOT = """\
-# amazing-hand-cli
+# amazing-hand
 
 A clonable template for AgentCulture mesh agents. It carries an agent-first CLI
 (cited from the teken `python-cli` reference), a mesh identity (`culture.yaml` +
@@ -20,12 +20,12 @@ buildable/deployable package baseline. Clone it, rename the package, edit
 
 ## Verbs
 
-- `amazing-hand-cli whoami` — identity probe from `culture.yaml`.
-- `amazing-hand-cli learn` — structured self-teaching prompt.
-- `amazing-hand-cli explain <path>` — markdown docs for any noun/verb.
-- `amazing-hand-cli overview` — descriptive snapshot of the agent.
-- `amazing-hand-cli doctor` — check the agent-identity invariants.
-- `amazing-hand-cli cli overview` — describe the CLI surface.
+- `amazing-hand whoami` — identity probe from `culture.yaml`.
+- `amazing-hand learn` — structured self-teaching prompt.
+- `amazing-hand explain <path>` — markdown docs for any noun/verb.
+- `amazing-hand overview` — descriptive snapshot of the agent.
+- `amazing-hand doctor` — check the agent-identity invariants.
+- `amazing-hand cli overview` — describe the CLI surface.
 
 ## Exit-code policy
 
@@ -36,49 +36,49 @@ buildable/deployable package baseline. Clone it, rename the package, edit
 
 ## See also
 
-- `amazing-hand-cli explain whoami`
-- `amazing-hand-cli explain doctor`
+- `amazing-hand explain whoami`
+- `amazing-hand explain doctor`
 """
 
 _WHOAMI = """\
-# amazing-hand-cli whoami
+# amazing-hand whoami
 
 Reports the agent's identity from `culture.yaml`: nick (`suffix`), backend,
 served model, and the package version. Read-only.
 
 ## Usage
 
-    amazing-hand-cli whoami
-    amazing-hand-cli whoami --json
+    amazing-hand whoami
+    amazing-hand whoami --json
 """
 
 _LEARN = """\
-# amazing-hand-cli learn
+# amazing-hand learn
 
 Prints a structured self-teaching prompt covering purpose, command map,
 exit-code policy, `--json` support, and the `explain` pointer.
 
 ## Usage
 
-    amazing-hand-cli learn
-    amazing-hand-cli learn --json
+    amazing-hand learn
+    amazing-hand learn --json
 """
 
 _EXPLAIN = """\
-# amazing-hand-cli explain <path>
+# amazing-hand explain <path>
 
 Prints markdown documentation for any noun/verb path. Unlike `--help` (terse,
 positional), `explain` is global and addressable by path.
 
 ## Usage
 
-    amazing-hand-cli explain amazing-hand-cli
-    amazing-hand-cli explain whoami
-    amazing-hand-cli explain --json <path>
+    amazing-hand explain amazing-hand
+    amazing-hand explain whoami
+    amazing-hand explain --json <path>
 """
 
 _OVERVIEW = """\
-# amazing-hand-cli overview
+# amazing-hand overview
 
 Read-only descriptive snapshot of the agent: identity (from `culture.yaml`), the
 verb surface, and the sibling-pattern artifacts the template carries. Accepts an
@@ -86,12 +86,12 @@ ignored `target` so a stray path never hard-fails.
 
 ## Usage
 
-    amazing-hand-cli overview
-    amazing-hand-cli overview --json
+    amazing-hand overview
+    amazing-hand overview --json
 """
 
 _DOCTOR = """\
-# amazing-hand-cli doctor
+# amazing-hand doctor
 
 Checks the agent-identity invariants `steward doctor` verifies:
 prompt-file-present and backend-consistency (`claude` → `CLAUDE.md`), plus a
@@ -99,26 +99,27 @@ skills-present check. Exits 1 when unhealthy.
 
 ## Usage
 
-    amazing-hand-cli doctor
-    amazing-hand-cli doctor --json
+    amazing-hand doctor
+    amazing-hand doctor --json
 """
 
 _CLI = """\
-# amazing-hand-cli cli
+# amazing-hand cli
 
 Noun group for CLI-surface introspection. `cli overview` describes the CLI
 itself (distinct from the global `overview`, which describes the agent).
 
 ## Usage
 
-    amazing-hand-cli cli overview
-    amazing-hand-cli cli overview --json
+    amazing-hand cli overview
+    amazing-hand cli overview --json
 """
 
 
 ENTRIES: dict[tuple[str, ...], str] = {
     (): _ROOT,
-    ("amazing-hand-cli",): _ROOT,
+    ("amazing-hand",): _ROOT,
+    ("amazing-hand-cli",): _ROOT,  # back-compat alias for the dist/nick name
     ("whoami",): _WHOAMI,
     ("learn",): _LEARN,
     ("explain",): _EXPLAIN,

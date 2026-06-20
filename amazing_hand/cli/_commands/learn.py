@@ -1,4 +1,4 @@
-"""``amazing-hand-cli learn`` — the learnability affordance.
+"""``amazing-hand learn`` — the learnability affordance.
 
 Prints a structured self-teaching prompt. Must satisfy the agent-first rubric:
 >=200 chars and mention purpose, command map, exit codes, --json, and explain.
@@ -12,7 +12,7 @@ from amazing_hand import __version__
 from amazing_hand.cli._output import emit_result
 
 _TEXT = """\
-amazing-hand-cli — a clonable template for AgentCulture mesh agents.
+amazing-hand — a clonable template for AgentCulture mesh agents.
 
 Purpose
 -------
@@ -23,12 +23,12 @@ rename the package, and edit culture.yaml to mint a new agent.
 
 Commands
 --------
-  amazing-hand-cli whoami             Identity from culture.yaml.
-  amazing-hand-cli learn              This self-teaching prompt.
-  amazing-hand-cli explain <path>...  Markdown docs for any noun/verb path.
-  amazing-hand-cli overview           Descriptive snapshot of the agent.
-  amazing-hand-cli doctor             Check the agent-identity invariants.
-  amazing-hand-cli cli overview       Describe the CLI surface itself.
+  amazing-hand whoami             Identity from culture.yaml.
+  amazing-hand learn              This self-teaching prompt.
+  amazing-hand explain <path>...  Markdown docs for any noun/verb path.
+  amazing-hand overview           Descriptive snapshot of the agent.
+  amazing-hand doctor             Check the agent-identity invariants.
+  amazing-hand cli overview       Describe the CLI surface itself.
 
 Machine-readable output
 -----------------------
@@ -44,13 +44,13 @@ Exit-code policy
 
 More detail
 -----------
-  amazing-hand-cli explain amazing-hand-cli
+  amazing-hand explain amazing-hand
 """
 
 
 def _as_json_payload() -> dict[str, object]:
     return {
-        "tool": "amazing-hand-cli",
+        "tool": "amazing-hand",
         "version": __version__,
         "purpose": "Clonable scaffold for a new AgentCulture mesh agent.",
         "commands": [
@@ -67,7 +67,7 @@ def _as_json_payload() -> dict[str, object]:
             "2": "environment/setup error",
         },
         "json_support": True,
-        "explain_pointer": "amazing-hand-cli explain <path>",
+        "explain_pointer": "amazing-hand explain <path>",
     }
 
 

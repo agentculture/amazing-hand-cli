@@ -70,8 +70,8 @@ def _build_parser() -> argparse.ArgumentParser:
     from amazing_hand.cli._commands import whoami as _whoami_cmd
 
     parser = _CliArgumentParser(
-        prog="amazing-hand-cli",
-        description="amazing-hand-cli — a clonable template for AgentCulture mesh agents.",
+        prog="amazing-hand",
+        description="amazing-hand — a clonable template for AgentCulture mesh agents.",
     )
     parser.add_argument(
         "--version",

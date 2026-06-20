@@ -15,7 +15,7 @@ def test_overview_text(capsys: pytest.CaptureFixture[str]) -> None:
     rc = main(["overview"])
     assert rc == 0
     out = capsys.readouterr().out
-    assert "# amazing-hand-cli" in out
+    assert "# amazing-hand" in out
     assert "Identity" in out
 
 
@@ -23,7 +23,7 @@ def test_overview_json_shape(capsys: pytest.CaptureFixture[str]) -> None:
     rc = main(["overview", "--json"])
     assert rc == 0
     payload = json.loads(capsys.readouterr().out)
-    assert payload["subject"] == "amazing-hand-cli"
+    assert payload["subject"] == "amazing-hand"
     assert isinstance(payload["sections"], list)
     assert payload["sections"]
 
@@ -41,14 +41,14 @@ def test_overview_graceful_on_bad_path(capsys: pytest.CaptureFixture[str]) -> No
 def test_cli_overview_text(capsys: pytest.CaptureFixture[str]) -> None:
     rc = main(["cli", "overview"])
     assert rc == 0
-    assert "# amazing-hand-cli cli" in capsys.readouterr().out
+    assert "# amazing-hand cli" in capsys.readouterr().out
 
 
 def test_cli_overview_json_shape(capsys: pytest.CaptureFixture[str]) -> None:
     rc = main(["cli", "overview", "--json"])
     assert rc == 0
     payload = json.loads(capsys.readouterr().out)
-    assert payload["subject"] == "amazing-hand-cli cli"
+    assert payload["subject"] == "amazing-hand cli"
     assert isinstance(payload["sections"], list)
 
 
@@ -77,7 +77,7 @@ def test_cli_overview_unknown_flag_structured_error(
 def test_doctor_text(capsys: pytest.CaptureFixture[str]) -> None:
     rc = main(["doctor"])
     assert rc in (0, 1)
-    assert "amazing-hand-cli doctor" in capsys.readouterr().out
+    assert "amazing-hand doctor" in capsys.readouterr().out
 
 
 def test_doctor_json_shape(capsys: pytest.CaptureFixture[str]) -> None:

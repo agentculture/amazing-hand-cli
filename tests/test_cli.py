@@ -21,7 +21,7 @@ def test_version_flag(capsys: pytest.CaptureFixture[str]) -> None:
 def test_no_args_prints_help(capsys: pytest.CaptureFixture[str]) -> None:
     rc = main([])
     assert rc == 0
-    assert "usage: amazing-hand-cli" in capsys.readouterr().out
+    assert "usage: amazing-hand" in capsys.readouterr().out
 
 
 def test_unknown_command_errors(capsys: pytest.CaptureFixture[str]) -> None:
@@ -62,7 +62,7 @@ def test_learn_text(capsys: pytest.CaptureFixture[str]) -> None:
     assert rc == 0
     out = capsys.readouterr().out
     assert len(out) >= 200
-    assert "amazing-hand-cli" in out
+    assert "amazing-hand" in out
     assert "Exit-code policy" in out
     assert "--json" in out
     assert "explain" in out
@@ -72,7 +72,7 @@ def test_learn_json(capsys: pytest.CaptureFixture[str]) -> None:
     rc = main(["learn", "--json"])
     assert rc == 0
     payload = json.loads(capsys.readouterr().out)
-    assert payload["tool"] == "amazing-hand-cli"
+    assert payload["tool"] == "amazing-hand"
     assert payload["version"] == __version__
     assert payload["json_support"] is True
 
@@ -83,11 +83,11 @@ def test_learn_json(capsys: pytest.CaptureFixture[str]) -> None:
 def test_explain_root(capsys: pytest.CaptureFixture[str]) -> None:
     rc = main(["explain"])
     assert rc == 0
-    assert "# amazing-hand-cli" in capsys.readouterr().out
+    assert "# amazing-hand" in capsys.readouterr().out
 
 
 def test_explain_self(capsys: pytest.CaptureFixture[str]) -> None:
-    rc = main(["explain", "amazing-hand-cli"])
+    rc = main(["explain", "amazing-hand"])
     assert rc == 0
     assert capsys.readouterr().out.startswith("#")
 
@@ -97,7 +97,7 @@ def test_explain_json(capsys: pytest.CaptureFixture[str]) -> None:
     assert rc == 0
     payload = json.loads(capsys.readouterr().out)
     assert payload["path"] == ["whoami"]
-    assert "amazing-hand-cli whoami" in payload["markdown"]
+    assert "amazing-hand whoami" in payload["markdown"]
 
 
 def test_explain_unknown_path_errors(capsys: pytest.CaptureFixture[str]) -> None:
